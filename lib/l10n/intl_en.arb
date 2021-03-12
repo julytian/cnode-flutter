@@ -1,0 +1,17 @@
+{
+  "appName": "Cnode Flutter",
+  "tabHome": "Home",
+  "tabCollect": "Collect",
+  "tabMessage": "Message",
+  "tabUser": "Me",
+  "actionConfirm": "Confirm",
+  "actionCancel": "Cancel",
+  "viewStateMessageError": "Load Failed",
+  "viewStateMessageNetworkError": "Load Failed,Check network ",
+  "viewStateMessageEmpty": "Nothing Found",
+  "viewStateMessageUnAuth": "Not sign in yet",
+  "viewStateButtonRefresh": "Refresh",
+  "viewStateButtonRetry": "Retry",
+  "viewStateButtonLogin": "Sign In",
+  "retry": "Retry"
+}
