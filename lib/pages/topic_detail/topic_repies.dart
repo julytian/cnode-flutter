@@ -1,8 +1,6 @@
 import 'package:cnode_flutter2/config/color_manager.dart';
-import 'package:cnode_flutter2/config/router_manager.dart';
 import 'package:cnode_flutter2/models/topic_detail_model.dart';
 import 'package:cnode_flutter2/utils/util.dart';
-import 'package:cnode_flutter2/view_models/topic_detail_view_model.dart';
 import 'package:cnode_flutter2/widgets/common_image.dart';
 import 'package:cnode_flutter2/widgets/common_markdown.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +44,7 @@ class _TopicRepiesState extends State<TopicRepies> {
       child: Column(
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
             child: Row(
               children: [
                 ClipOval(

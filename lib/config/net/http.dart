@@ -1,7 +1,6 @@
-
 import 'package:cnode_flutter2/config/net/base.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 final Http http = Http();
 
@@ -9,16 +8,28 @@ class Http extends BaseHttp {
   @override
   void init() {
     options.baseUrl = 'https://cnodejs.org/api/v1';
-    interceptors..add(ApiInterceptor());
+    interceptors
+      ..add(ApiInterceptor())
+      ..add(
+        PrettyDioLogger(
+          requestHeader: true,
+          requestBody: true,
+          responseBody: true,
+          responseHeader: false,
+          error: true,
+          compact: true,
+          maxWidth: 90,
+        ),
+      );
   }
 }
 
 class ApiInterceptor extends InterceptorsWrapper {
   @override
   Future onRequest(RequestOptions options) async {
-    debugPrint(
-        '---api-request--->url--> ${options.method} => ${options.baseUrl}${options.path}' +
-            ' queryParameters: ${options.queryParameters} post: ${options.data}');
+    // debugPrint(
+    //     '---api-request--->url--> ${options.method} => ${options.baseUrl}${options.path}' +
+    //         ' queryParameters: ${options.queryParameters} post: ${options.data}');
     return options;
   }
 
