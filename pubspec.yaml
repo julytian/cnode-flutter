@@ -48,6 +48,7 @@ dependencies:
   flutter_markdown: ^0.6.0
   pretty_dio_logger: ^1.2.0-beta
   dio_cache_interceptor: ^2.0.0-beta.7
+  flutter_screenutil: ^5.0.0-nullsafety.10
 
 dev_dependencies:
   flutter_test:

@@ -97,6 +97,7 @@ class _HomePageState extends State<HomePage>
       alignment: Alignment.center,
       color: Theme.of(context).primaryColor.withOpacity(1),
       child: TabBar(
+        isScrollable: true,
         indicatorSize: TabBarIndicatorSize.label,
         tabs: List.generate(
           tabLists.length,

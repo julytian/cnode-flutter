@@ -1,3 +1,4 @@
+import 'package:cnode_flutter2/pages/login/login_page.dart';
 import 'package:cnode_flutter2/pages/tab/tab_navigator.dart';
 import 'package:cnode_flutter2/pages/topic_detail/topic_detail_page.dart';
 import 'package:cnode_flutter2/widgets/page_route.dart';
@@ -22,6 +23,11 @@ class MyRouter {
           builder: (_) {
             return TopicDetailPage(params['id'], title: params['title']);
           },
+        );
+      case RouteName.login:
+        return CupertinoPageRoute(
+          fullscreenDialog: true,
+          builder: (_) => LoginPage(),
         );
       default:
         return CupertinoPageRoute(

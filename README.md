@@ -17,3 +17,8 @@ samples, guidance on mobile development, and a full API reference.
 
 ## 多语言
 > flutter pub run intl_utils:generate
+
+## 自定义预览端口和host
+> flutter run -d chrome --web-port 55555 --web-hostname 0.0.0.0
+>
+> http://192.168.3.157:60949/#/  192.168.3.157是你本机的ip 
