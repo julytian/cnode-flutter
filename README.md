@@ -21,4 +21,9 @@ samples, guidance on mobile development, and a full API reference.
 ## 自定义预览端口和host
 > flutter run -d chrome --web-port 55555 --web-hostname 0.0.0.0
 >
-> http://192.168.3.157:60949/#/  192.168.3.157是你本机的ip 
+> http://192.168.3.157:60949/#/  192.168.3.157是你本机的ip
+
+## 桌面端适配
+> flutter config --enable-macos-desktop
+>
+>
