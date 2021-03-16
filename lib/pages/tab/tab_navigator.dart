@@ -6,7 +6,6 @@ import 'package:cnode_flutter2/pages/tab/message/message_page.dart';
 import 'package:cnode_flutter2/pages/tab/user/user_page.dart';
 import 'package:cnode_flutter2/view_models/user_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 
 List<Widget> tabPages = [
@@ -32,7 +31,8 @@ class _TabNavigatorPageState extends State<TabNavigatorPage> {
       body: WillPopScope(
         onWillPop: () async {
           if (_lastPressedTime == null ||
-              DateTime.now().difference(_lastPressedTime) > Duration(seconds: 1)) {
+              DateTime.now().difference(_lastPressedTime) >
+                  Duration(seconds: 1)) {
             _lastPressedTime = DateTime.now();
             return false;
           }
@@ -53,6 +53,7 @@ class _TabNavigatorPageState extends State<TabNavigatorPage> {
       bottomNavigationBar: bottomNavigationBar(),
     );
   }
+
   /// 底部导航栏
   Widget bottomNavigationBar() {
     return BottomNavigationBar(
@@ -76,11 +77,12 @@ class _TabNavigatorPageState extends State<TabNavigatorPage> {
       ],
       type: BottomNavigationBarType.fixed,
       currentIndex: _currentIndex,
-      onTap: (index) async{
+      onTap: (index) async {
         if (index == 1 || index == 2) {
           var hasUser = Provider.of<UserViewModel>(context).hasUser;
           if (!hasUser) {
-            final isLogin = await Navigator.of(context).pushNamed(RouteName.login);
+            final isLogin =
+                await Navigator.of(context).pushNamed(RouteName.login);
             if (isLogin != null) {
               _pageController.jumpToPage(index);
             }

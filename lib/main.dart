@@ -1,14 +1,27 @@
+import 'dart:io';
+
 import 'package:cnode_flutter2/config/provider_manager.dart';
 import 'package:cnode_flutter2/config/router_manager.dart';
 import 'package:cnode_flutter2/config/storage_manager.dart';
 import 'package:cnode_flutter2/generated/l10n.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+// Sets a platform override for desktop to avoid exceptions. See
+// https://flutter.dev/desktop#target-platform-override for more info.
+void _enablePlatformOverrideForDesktop() {
+  if (!kIsWeb && (Platform.isMacOS || Platform.isWindows || Platform.isLinux)) {
+    debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
+  }
+}
+
 void main() async {
+  HttpOverrides.global = new MyHttpOverrides();
+  _enablePlatformOverrideForDesktop();
   Provider.debugCheckInvalidValueType = null;
   WidgetsFlutterBinding.ensureInitialized();
   await StorageManager.init();
@@ -43,5 +56,14 @@ class MyApp extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
   }
 }
