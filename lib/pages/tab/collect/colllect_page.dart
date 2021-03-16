@@ -19,9 +19,6 @@ class _CollectPageState extends State<CollectPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('收藏'),
-      ),
       body: SafeArea(
         child: topicCollectBody(),
       ),
