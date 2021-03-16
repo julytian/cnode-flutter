@@ -1,3 +1,4 @@
+import 'package:cnode_flutter2/config/color_manager.dart';
 import 'package:cnode_flutter2/pages/tab/message/message_item.dart';
 import 'package:cnode_flutter2/providers/provider_widget.dart';
 import 'package:cnode_flutter2/providers/view_state_widget.dart';
@@ -84,7 +85,7 @@ class _MessagePageState extends State<MessagePage>
                           MessageItem(model.messages.hasNotReadMessages[index]),
                       separatorBuilder: (context, int) => Divider(
                         height: 0.3,
-                        color: Theme.of(context).dividerColor,
+                        color: ColorManager.colordb,
                       ),
                       itemCount: model.messages.hasNotReadMessages.length,
                     ),
@@ -104,7 +105,7 @@ class _MessagePageState extends State<MessagePage>
                           MessageItem(model.messages.hasReadMessages[index]),
                       separatorBuilder: (context, int) => Divider(
                         height: 0.3,
-                        color: Theme.of(context).dividerColor,
+                        color: ColorManager.colordb,
                       ),
                       itemCount: model.messages.hasReadMessages.length,
                     ),

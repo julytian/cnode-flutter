@@ -17,15 +17,7 @@ class MessageItem extends StatelessWidget {
             arguments: {'id': message.topic.id, 'title': message.topic.title});
       },
       child: Container(
-        padding: const EdgeInsets.all(10),
-        // decoration: BoxDecoration(
-        //   border: Border(
-        //     bottom: BorderSide(
-        //       width: 0.3,
-        //       color: Theme.of(context).dividerColor,
-        //     ),
-        //   ),
-        // ),
+        padding: EdgeInsets.all(10),
         child: Column(
           children: <Widget>[
             Row(
