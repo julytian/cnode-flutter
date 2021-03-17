@@ -11,39 +11,36 @@ class TopicItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.of(context).pushNamed(RouteName.detail,
-            arguments: {'id': topic.id, 'title': topic.title});
-      },
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-        decoration: BoxDecoration(
-          border: Border(
-            bottom: BorderSide(
-              color: Theme.of(context).dividerColor,
-              width: 0.3,
+    return Material(
+      color: Theme.of(context).scaffoldBackgroundColor,
+      child: InkWell(
+        onTap: () {
+          Navigator.of(context).pushNamed(RouteName.detail,
+              arguments: {'id': topic.id, 'title': topic.title});
+        },
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: Divider.createBorderSide(context, width: 0.7),
             ),
           ),
-        ),
-        child: Column(
-          children: [
-            topicTitle(context),
-            SizedBox(
-              height: 5,
-            ),
-            topicContent(context),
-          ],
+          child: Column(
+            children: [
+              topicTitle(context),
+              SizedBox(
+                height: 5,
+              ),
+              topicContent(context),
+            ],
+          ),
         ),
       ),
     );
   }
 
   Widget topicContent(context) {
-    TextStyle _textStyle = Theme.of(context).textTheme.caption.copyWith(
-          fontSize: 12,
-          color: Color(0xff34495e),
-        );
+    TextStyle _textStyle = Theme.of(context).textTheme.caption;
     return Row(
       children: [
         ClipOval(
@@ -73,7 +70,6 @@ class TopicItem extends StatelessWidget {
                           text: '${topic.replyCount}',
                           style: _textStyle.copyWith(
                             color: Theme.of(context).accentColor,
-                            fontWeight: FontWeight.w600,
                           ),
                         ),
                         TextSpan(
@@ -136,11 +132,8 @@ class TopicItem extends StatelessWidget {
             topic.title,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: Theme.of(context).textTheme.subtitle1.copyWith(
-                  color: Color(0xff2c3e50),
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
+            textAlign: TextAlign.start,
+            style: Theme.of(context).textTheme.bodyText2,
           ),
         ),
       ],

@@ -79,8 +79,8 @@ class _TopicDetailPageState extends State<TopicDetailPage> {
         var id = topicDetailModel.topicDetail?.id;
         return IconButton(
           icon: Icon(
-            Icons.favorite,
-            color: isCollect ? ColorManager.color01 : Colors.black,
+            isCollect ? Icons.favorite : Icons.favorite_border,
+            color: Colors.redAccent[100],
           ),
           onPressed: () async {
             if (model.hasUser) {

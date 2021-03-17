@@ -13,7 +13,8 @@ class CollectItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    TextStyle _textStyle = Theme.of(context).textTheme.caption;
+    return InkWell(
       onTap: () {
         Navigator.of(context).pushNamed(RouteName.detail,
             arguments: {'id': collectItem.id, 'title': collectItem.title});
@@ -43,26 +44,18 @@ class CollectItem extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.start,
-                      style: TextStyle(
-                        color: ColorManager.color31,
-                      ),
+                      style: Theme.of(context).textTheme.bodyText2,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           collectItem.author.loginname,
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: ColorManager.color31,
-                          ),
+                          style: _textStyle,
                         ),
                         Text(
                           Utils.getTimeInfo(collectItem.createAt),
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: ColorManager.color01,
-                          ),
+                          style: _textStyle,
                         )
                       ],
                     )

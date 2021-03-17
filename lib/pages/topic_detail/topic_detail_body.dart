@@ -28,8 +28,8 @@ class TopicDetailBody extends StatelessWidget {
             padding: EdgeInsets.all(15),
             child: Column(
               children: [
-                topicTitle(model.topicDetail),
-                topicInfo(model.topicDetail),
+                topicTitle(context, model.topicDetail),
+                topicInfo(context, model.topicDetail),
                 Container(
                   alignment: Alignment.centerLeft,
                   child: CommonMarkdown(model.topicDetail.content),
@@ -47,11 +47,8 @@ class TopicDetailBody extends StatelessWidget {
   }
 
   /// 主题详情信息
-  Widget topicInfo(TopicDetailModel topic) {
-    TextStyle _textStyle = TextStyle(
-      fontSize: 12,
-      color: ColorManager.color5e,
-    );
+  Widget topicInfo(BuildContext context, TopicDetailModel topic) {
+    TextStyle _textStyle = Theme.of(context).textTheme.caption;
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 15),
       child: Row(
@@ -116,21 +113,17 @@ class TopicDetailBody extends StatelessWidget {
   }
 
   /// 主题标题
-  Widget topicTitle(TopicDetailModel topic) {
+  Widget topicTitle(BuildContext context, TopicDetailModel topic) {
     return Container(
       alignment: Alignment.centerLeft, // 有alignment就会自动撑满
       padding: EdgeInsets.symmetric(vertical: 5,horizontal: 10),
       decoration: BoxDecoration(
-        color: ColorManager.colorf0,
+        color: Theme.of(context).textTheme.caption.color.withOpacity(0.06),
         borderRadius: BorderRadius.circular(5),
       ),
       child: Text(
         topic.title,
-        style: TextStyle(
-          color: ColorManager.color50,
-          fontWeight: FontWeight.w600,
-          fontSize: 18,
-        ),
+        style: Theme.of(context).textTheme.bodyText1.copyWith(fontSize: 18),
       ),
     );
   }

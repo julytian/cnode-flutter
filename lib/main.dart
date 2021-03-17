@@ -4,6 +4,7 @@ import 'package:cnode_flutter2/config/provider_manager.dart';
 import 'package:cnode_flutter2/config/router_manager.dart';
 import 'package:cnode_flutter2/config/storage_manager.dart';
 import 'package:cnode_flutter2/generated/l10n.dart';
+import 'package:cnode_flutter2/view_models/theme_view_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -38,28 +39,29 @@ class MyApp extends StatelessWidget {
     return OKToast(
       child: MultiProvider(
         providers: providers,
-        child: RefreshConfiguration(
-          hideFooterWhenNotFull: true,
-          child: MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              primarySwatch: Colors.green,
-              visualDensity: VisualDensity.adaptivePlatformDensity,
-            ),
-            localizationsDelegates: [
-              S.delegate,
-              RefreshLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-            ],
-            supportedLocales: S.delegate.supportedLocales,
-            onGenerateRoute: MyRouter.generateRoute,
-            initialRoute: RouteName.home,
-          ),
+        child: Consumer<ThemeViewModel>(
+          builder: (context, themeModel, child) {
+            return RefreshConfiguration(
+              hideFooterWhenNotFull: true,
+              child: MaterialApp(
+                debugShowCheckedModeBanner: false,
+                theme: themeModel.themeData(),
+                darkTheme: themeModel.themeData(platformDarkMode: true),
+                localizationsDelegates: [
+                  S.delegate,
+                  RefreshLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                ],
+                supportedLocales: S.delegate.supportedLocales,
+                onGenerateRoute: MyRouter.generateRoute,
+                initialRoute: RouteName.home,
+              ),
+            );
+          },
         ),
       ),
     );
   }
 }
-

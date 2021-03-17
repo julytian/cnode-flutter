@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ColorManager {
-  static Color color31 = Color(0xff313131);
+  static Color color31 = Brightness.light != null ?  Color(0xff313131) : Color(0xffE6E6E6);
   static Color colorf0 = Color(0xfff0f0f0);
   static Color colorff = Color(0xffffffff);
   static Color colore7 = Color(0xffe7e7e7);

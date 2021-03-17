@@ -55,8 +55,7 @@ class _CollectPageState extends State<CollectPage> with AutomaticKeepAliveClient
             //分割器构造器
             separatorBuilder: (BuildContext context, int index) {
               return Divider(
-                color: ColorManager.colordb,
-                height: 0.3,
+                height: 0.7,
               );
             },
           ),

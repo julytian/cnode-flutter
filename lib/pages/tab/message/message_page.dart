@@ -93,8 +93,7 @@ class _MessagePageState extends State<MessagePage>
             child: ListView.separated(
               itemBuilder: (context, index) => MessageItem(messages[index]),
               separatorBuilder: (context, int) => Divider(
-                height: 0.3,
-                color: ColorManager.colordb,
+                height: 0.7,
               ),
               itemCount: count,
             ),

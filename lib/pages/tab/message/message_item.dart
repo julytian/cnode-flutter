@@ -11,7 +11,7 @@ class MessageItem extends StatelessWidget {
   MessageItem(this.message);
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: () {
         Navigator.of(context).pushNamed(RouteName.detail,
             arguments: {'id': message.topic.id, 'title': message.topic.title});
@@ -38,17 +38,12 @@ class MessageItem extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       '${message.author.loginname}在回复中@了您',
+                      textAlign: TextAlign.start,
                       style: Theme.of(context).textTheme.bodyText2,
-                    ),
-                    SizedBox(
-                      height: 4,
                     ),
                     Text(
                       '${Utils.getTimeInfo(message.createAt)}',
-                      style: TextStyle(
-                        color: Theme.of(context).textTheme.caption.color,
-                        fontSize: 12,
-                      ),
+                      style: Theme.of(context).textTheme.caption,
                     ),
                   ],
                 ),
@@ -59,14 +54,14 @@ class MessageItem extends StatelessWidget {
             ),
             CommonMarkdown(message.reply.content),
             SizedBox(
-              height: 10,
+              height: 5,
             ),
             Container(
               alignment: Alignment.centerLeft,
               padding: EdgeInsets.all(5),
               decoration: BoxDecoration(
                 color:
-                    Theme.of(context).textTheme.caption.color.withOpacity(0.08),
+                    Theme.of(context).textTheme.caption.color.withOpacity(0.06),
                 borderRadius: BorderRadius.circular(4),
               ),
               child: Wrap(

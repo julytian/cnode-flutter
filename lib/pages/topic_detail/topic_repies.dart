@@ -28,17 +28,11 @@ class _TopicRepiesState extends State<TopicRepies> {
 
   Widget replyItem(Reply reply) {
     var author = reply.author;
-    TextStyle _textStyle = TextStyle(
-      fontSize: 14,
-      color: ColorManager.color62,
-    );
+    TextStyle _textStyle = Theme.of(context).textTheme.caption.copyWith(fontSize: 14);
     return Container(
       decoration: BoxDecoration(
         border: Border(
-          top: BorderSide(
-            width: 0.3,
-            color: Theme.of(context).dividerColor,
-          ),
+          top: Divider.createBorderSide(context, width: 0.7),
         ),
       ),
       child: Column(
@@ -77,17 +71,15 @@ class _TopicRepiesState extends State<TopicRepies> {
                       IconButton(
                         alignment: Alignment.centerRight,
                         onPressed: () async {},
-                        color: Colors.black,
+                        color: Theme.of(context).textTheme.caption.color,
                         icon: Icon(
-                          Icons.thumb_up,
+                          Icons.thumb_up_alt_sharp,
                           size: 16,
                         ),
                       ),
                       Text(
                         '${reply.ups.length}',
-                        style: _textStyle.copyWith(
-                          color: ColorManager.color31,
-                        ),
+                        style: _textStyle,
                       ),
                     ],
                   ),
@@ -114,10 +106,7 @@ class _TopicRepiesState extends State<TopicRepies> {
       padding: EdgeInsets.all(15),
       decoration: BoxDecoration(
         border: Border(
-          top: BorderSide(
-            width: 0.3,
-            color: Theme.of(context).dividerColor,
-          ),
+          top: Divider.createBorderSide(context, width: 0.7),
         ),
       ),
       child: Row(
@@ -127,15 +116,12 @@ class _TopicRepiesState extends State<TopicRepies> {
             style: TextStyle(
               fontWeight: FontWeight.w700,
               color: Theme.of(context).accentColor,
-              fontSize: 18,
+              fontSize: 16,
             ),
           ),
           Text(
             ' 回复',
-            style: TextStyle(
-              color: ColorManager.color50,
-              fontSize: 16,
-            ),
+            style: Theme.of(context).textTheme.caption,
           ),
         ],
       ),
