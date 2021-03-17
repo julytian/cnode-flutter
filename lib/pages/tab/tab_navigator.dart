@@ -79,7 +79,7 @@ class _TabNavigatorPageState extends State<TabNavigatorPage> {
       currentIndex: _currentIndex,
       onTap: (index) async {
         if (index == 1 || index == 2) {
-          var hasUser = Provider.of<UserViewModel>(context).hasUser;
+          var hasUser = Provider.of<UserViewModel>(context, listen: false).hasUser;
           if (!hasUser) {
             final isLogin =
                 await Navigator.of(context).pushNamed(RouteName.login);
