@@ -15,9 +15,10 @@ class CollectPage extends StatefulWidget {
   _CollectPageState createState() => _CollectPageState();
 }
 
-class _CollectPageState extends State<CollectPage> {
+class _CollectPageState extends State<CollectPage> with AutomaticKeepAliveClientMixin{
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       body: SafeArea(
         child: topicCollectBody(),
@@ -63,4 +64,7 @@ class _CollectPageState extends State<CollectPage> {
       },
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

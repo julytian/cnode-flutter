@@ -1,10 +1,12 @@
+import 'package:cnode_flutter2/config/color_manager.dart';
+import 'package:cnode_flutter2/config/router_manager.dart';
 import 'package:cnode_flutter2/pages/topic_detail/topic_detail_body.dart';
 import 'package:cnode_flutter2/providers/provider_widget.dart';
 import 'package:cnode_flutter2/utils/status_bar_utils.dart';
 import 'package:cnode_flutter2/view_models/topic_detail_view_model.dart';
+import 'package:cnode_flutter2/view_models/user_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 class TopicDetailPage extends StatefulWidget {
   final String id;
   final String title;
@@ -52,6 +54,9 @@ class _TopicDetailPageState extends State<TopicDetailPage> {
           return Scaffold(
             appBar: AppBar(
               title: appBarTitle(),
+              actions: [
+                collectIcon(model),
+              ],
             ),
             body: SafeArea(
               child: TopicDetailBody(
@@ -63,6 +68,33 @@ class _TopicDetailPageState extends State<TopicDetailPage> {
           );
         },
       ),
+    );
+  }
+
+  Widget collectIcon(TopicDetailViewModel topicDetailModel) {
+    return ProviderWidget<UserViewModel>(
+      model: UserViewModel(),
+      builder: (context,model,child) {
+        var isCollect = topicDetailModel.topicDetail?.isCollect ?? false;
+        var id = topicDetailModel.topicDetail?.id;
+        return IconButton(
+          icon: Icon(
+            Icons.favorite,
+            color: isCollect ? ColorManager.color01 : Colors.black,
+          ),
+          onPressed: () async {
+            if (model.hasUser) {
+              await topicDetailModel.handleTopicCollect(id, isCollect);
+            } else {
+              final isLogin =
+                  await Navigator.of(context).pushNamed(RouteName.login);
+              if (isLogin != null) {
+                await topicDetailModel.initData(id, isInit: false);
+              }
+            }
+          },
+        );
+      },
     );
   }
 

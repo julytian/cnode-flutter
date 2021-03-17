@@ -10,8 +10,10 @@ class MessageViewModel extends ViewStateModel {
       RefreshController(initialRefresh: false);
   RefreshController get refreshController => _refreshController;
 
-  initData() async {
-    setBusy();
+  initData({bool init = true}) async {
+    if (init) {
+      setBusy();
+    }
     try {
       MessageModel data = await MessageRepository.apiGetMessages();
       if (data == null) {
@@ -27,5 +29,9 @@ class MessageViewModel extends ViewStateModel {
       refreshController.refreshFailed();
       setError(e, s);
     }
+  }
+
+  refresh() {
+    return initData(init: false);
   }
 }

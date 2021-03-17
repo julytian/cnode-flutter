@@ -73,50 +73,35 @@ class _MessagePageState extends State<MessagePage>
         return TabBarView(
           controller: controller,
           children: [
-            model.messages.hasNotReadMessages.length > 0
-                ? SmartRefresher(
-                    controller: model.refreshController,
-                    header: WaterDropHeader(),
-                    onRefresh: model.initData,
-                    enablePullUp: false,
-                    enablePullDown: true,
-                    child: ListView.separated(
-                      itemBuilder: (context, index) =>
-                          MessageItem(model.messages.hasNotReadMessages[index]),
-                      separatorBuilder: (context, int) => Divider(
-                        height: 0.3,
-                        color: ColorManager.colordb,
-                      ),
-                      itemCount: model.messages.hasNotReadMessages.length,
-                    ),
-                  )
-                : Center(
-                    child: Text('暂无消息'),
-                  ),
-            model.messages.hasReadMessages.length > 0
-                ? SmartRefresher(
-                    controller: model.refreshController,
-                    header: WaterDropHeader(),
-                    onRefresh: model.initData,
-                    enablePullUp: false,
-                    enablePullDown: true,
-                    child: ListView.separated(
-                      itemBuilder: (context, index) =>
-                          MessageItem(model.messages.hasReadMessages[index]),
-                      separatorBuilder: (context, int) => Divider(
-                        height: 0.3,
-                        color: ColorManager.colordb,
-                      ),
-                      itemCount: model.messages.hasReadMessages.length,
-                    ),
-                  )
-                : Center(
-                    child: Text('暂无消息'),
-                  ),
+            messageItem(model, model.messages.hasNotReadMessages),
+            messageItem(model, model.messages.hasReadMessages),
           ],
         );
       },
     );
+  }
+
+  Widget messageItem(MessageViewModel model, List messages) {
+    int count = messages.length;
+    return count > 0
+        ? SmartRefresher(
+            controller: model.refreshController,
+            header: WaterDropHeader(),
+            onRefresh: model.refresh,
+            enablePullUp: false,
+            enablePullDown: true,
+            child: ListView.separated(
+              itemBuilder: (context, index) => MessageItem(messages[index]),
+              separatorBuilder: (context, int) => Divider(
+                height: 0.3,
+                color: ColorManager.colordb,
+              ),
+              itemCount: count,
+            ),
+          )
+        : Center(
+            child: Text('暂无消息'),
+          );
   }
 
   @override
