@@ -17,7 +17,7 @@ class TopicDetailPage extends StatefulWidget {
 
 class _TopicDetailPageState extends State<TopicDetailPage> {
   ScrollController _scrollController = ScrollController();
-  bool _showBacktop = true;
+  bool _showBacktop = false;
   @override
   void initState() {
     super.initState();
