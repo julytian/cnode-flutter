@@ -6,6 +6,7 @@ import 'package:cnode_flutter2/config/storage_manager.dart';
 import 'package:cnode_flutter2/generated/l10n.dart';
 import 'package:cnode_flutter2/view_models/theme_view_model.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:oktoast/oktoast.dart';
@@ -29,6 +30,8 @@ void main() async {
   }
   Provider.debugCheckInvalidValueType = null;
   WidgetsFlutterBinding.ensureInitialized();
+  //滚动性能优化 1.22.0
+  GestureBinding.instance.resamplingEnabled = true;
   await StorageManager.init();
   runApp(MyApp());
 }
