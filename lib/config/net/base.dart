@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-// import 'package:dio/browser_imp.dart';
+import 'package:dio/browser_imp.dart';
 import 'package:dio/dio.dart';
-import 'package:dio/native_imp.dart';
+// import 'package:dio/native_imp.dart';
 import 'package:flutter/foundation.dart';
 
 _parseAndDecode(String response) {
@@ -13,8 +13,7 @@ parseJson(String text) {
   // 开一个线程解析
   return compute(_parseAndDecode, text);
 }
-
-abstract class BaseHttp extends DioForNative {
+abstract class BaseHttp extends DioForBrowser {
   BaseHttp() {
     (transformer as DefaultTransformer).jsonDecodeCallback = parseJson;
     interceptors..add(HeaderInterceptor());
