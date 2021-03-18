@@ -9,18 +9,18 @@ class Http extends BaseHttp {
   void init() {
     options.baseUrl = 'https://cnodejs.org/api/v1';
     interceptors
-      ..add(ApiInterceptor())
-      ..add(
-        PrettyDioLogger(
-          requestHeader: false,
-          requestBody: false,
-          responseBody: false,
-          responseHeader: false,
-          error: true,
-          compact: true,
-          maxWidth: 90,
-        ),
-      );
+      ..add(ApiInterceptor());
+      // ..add(
+      //   PrettyDioLogger(
+      //     requestHeader: false,
+      //     requestBody: false,
+      //     responseBody: false,
+      //     responseHeader: false,
+      //     error: true,
+      //     compact: true,
+      //     maxWidth: 90,
+      //   ),
+      // );
   }
 }
 
