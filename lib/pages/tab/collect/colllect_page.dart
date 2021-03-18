@@ -1,4 +1,3 @@
-import 'package:cnode_flutter2/config/color_manager.dart';
 import 'package:cnode_flutter2/models/topic_collect_model.dart';
 import 'package:cnode_flutter2/pages/tab/collect/collect_item.dart';
 import 'package:cnode_flutter2/providers/provider_widget.dart';

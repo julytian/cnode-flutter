@@ -1,6 +1,6 @@
 import 'package:cnode_flutter2/config/net/base.dart';
 import 'package:dio/dio.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+// import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 final Http http = Http();
 

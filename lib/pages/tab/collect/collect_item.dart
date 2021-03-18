@@ -1,5 +1,4 @@
 
-import 'package:cnode_flutter2/config/color_manager.dart';
 import 'package:cnode_flutter2/config/router_manager.dart';
 import 'package:cnode_flutter2/models/topic_collect_model.dart';
 import 'package:cnode_flutter2/utils/util.dart';

@@ -1,4 +1,3 @@
-import 'package:cnode_flutter2/config/color_manager.dart';
 import 'package:cnode_flutter2/models/topic_detail_model.dart';
 import 'package:cnode_flutter2/utils/util.dart';
 import 'package:cnode_flutter2/widgets/common_image.dart';
