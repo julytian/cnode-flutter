@@ -37,7 +37,13 @@ class _LoginPageState extends State<LoginPage> {
           SliverToBoxAdapter(
             child: Stack(
               children: [
-                loginTopPanel(),
+                Positioned(
+                  top: -20,
+                  left: 0,
+                  right: 0,
+                  height: 220 + MediaQuery.of(context).padding.top,
+                  child: loginTopPanel(),
+                ),
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 20),
                   child: Column(
