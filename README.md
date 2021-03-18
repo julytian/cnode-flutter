@@ -30,3 +30,5 @@ samples, guidance on mobile development, and a full API reference.
 
 ## web端
 > 开开启chrome浏览器然后再运行 flutter run -d chrome -v
+>
+> 打包 flutter build web --web-renderer html 
