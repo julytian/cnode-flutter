@@ -55,10 +55,6 @@ class _LoginPageState extends State<LoginPage> {
                           model: LoginViewModel(
                             Provider.of<UserViewModel>(context),
                           ),
-                          onModelReady: (model) {
-                            _accessTokenController.text =
-                                '3bb19f00-5695-44bb-9cdb-b59efdba7b96';
-                          },
                           builder: (context, model, child) {
                             return Form(
                               onWillPop: () async {
