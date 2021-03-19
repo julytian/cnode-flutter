@@ -1,6 +1,6 @@
 # cnode_flutter2
 
-A new Flutter project.
+flutter2.0开发cnode社区
 
 ## Getting Started
 
@@ -21,14 +21,15 @@ samples, guidance on mobile development, and a full API reference.
 ## 自定义预览端口和host
 > flutter run -d chrome --web-port 55555 --web-hostname 0.0.0.0
 >
-> http://192.168.3.157:60949/#/  192.168.3.157是你本机的ip
 
 ## 桌面端适配
 > flutter config --enable-macos-desktop
 >
->
 
 ## web端
-> 开开启chrome浏览器然后再运行 flutter run -d chrome -v
+> 开开启chrome浏览器然后再运行 flutter run -d chrome
 >
 > 打包 flutter build web --web-renderer html 
+
+## 部署web网页
+> 使用vercel服务做静态服务器
