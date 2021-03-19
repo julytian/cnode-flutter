@@ -1,22 +1,17 @@
 {
-    "name": "cnode_flutter2",
-    "short_name": "cnode_flutter2",
+    "name": "cnode_flutter",
+    "short_name": "cnode_flutter",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "flutter开发cnode社区",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
         {
-            "src": "icons/Icon-192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "icons/Icon-512.png",
-            "sizes": "512x512",
+            "src": "icons/logo.png",
+            "sizes": "100x100",
             "type": "image/png"
         }
     ]
