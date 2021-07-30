@@ -36,7 +36,7 @@ dependencies:
   cached_network_image: ^2.5.1
   shimmer: ^1.1.2
   pull_to_refresh: ^1.6.4
-  dio: ^4.0.0-beta7
+  dio: ^4.0.0
   #dio_flutter_transformer: ^3.0.2
   # markdown_widget: ^1.2.6
   url_launcher: ^6.0.2
@@ -46,7 +46,7 @@ dependencies:
       url: https://www.github.com/davidmartos96/intl_utils.git
       ref: compat
   flutter_markdown: ^0.6.0
-  pretty_dio_logger: ^1.2.0-beta
+  pretty_dio_logger: ^1.2.0-beta-1
   #dio_cache_interceptor: ^2.0.0-beta.7
   #flutter_screenutil: ^5.0.0-nullsafety.10
   #event_bus: ^2.0.0

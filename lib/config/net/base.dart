@@ -24,10 +24,10 @@ abstract class BaseHttp extends DioForBrowser {
 
 class HeaderInterceptor extends InterceptorsWrapper {
   @override
-  Future onRequest(RequestOptions options) async {
+  Future onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
     options.connectTimeout = 1000 * 45;
     options.receiveTimeout = 1000 * 45;
-    return options;
+    handler.next(options);
   }
 }
 

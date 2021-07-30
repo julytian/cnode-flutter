@@ -8,37 +8,42 @@ class Http extends BaseHttp {
   @override
   void init() {
     options.baseUrl = 'https://cnodejs.org/api/v1';
-    interceptors
-      ..add(ApiInterceptor());
-      // ..add(
-      //   PrettyDioLogger(
-      //     requestHeader: false,
-      //     requestBody: false,
-      //     responseBody: false,
-      //     responseHeader: false,
-      //     error: true,
-      //     compact: true,
-      //     maxWidth: 90,
-      //   ),
-      // );
+    interceptors..add(ApiInterceptor());
+    // ..add(
+    //   PrettyDioLogger(
+    //     requestHeader: false,
+    //     requestBody: false,
+    //     responseBody: false,
+    //     responseHeader: false,
+    //     error: true,
+    //     compact: true,
+    //     maxWidth: 90,
+    //   ),
+    // );
   }
 }
 
 class ApiInterceptor extends InterceptorsWrapper {
   @override
-  Future onRequest(RequestOptions options) async {
+  Future onRequest(
+    RequestOptions options,
+    RequestInterceptorHandler handler,
+  ) async {
     // debugPrint(
     //     '---api-request--->url--> ${options.method} => ${options.baseUrl}${options.path}' +
     //         ' queryParameters: ${options.queryParameters} post: ${options.data}');
-    return options;
+    return handler.next(options);
   }
 
   @override
-  Future onResponse(Response response) async {
+  Future onResponse(
+    Response response,
+    ResponseInterceptorHandler handler,
+  ) async {
     ResponseData responseData = ResponseData.fromJson(response.data);
     if (responseData.success) {
       response.data = responseData.data;
-      return http.resolve(response);
+      handler.resolve(response);
     } else {
       throw NotSuccessException.fromRespData(responseData);
     }
