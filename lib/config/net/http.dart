@@ -1,5 +1,6 @@
 import 'package:cnode_flutter2/config/net/base.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 // import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 final Http http = Http();
@@ -8,7 +9,14 @@ class Http extends BaseHttp {
   @override
   void init() {
     options.baseUrl = 'https://cnodejs.org/api/v1';
-    interceptors..add(ApiInterceptor());
+    interceptors
+      ..add(ApiInterceptor());
+    if (kReleaseMode == null) {
+      interceptors..add(LogInterceptor(
+        responseBody: true,
+        requestBody: true,
+      ));
+    }
     // ..add(
     //   PrettyDioLogger(
     //     requestHeader: false,
